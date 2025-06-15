@@ -4,13 +4,12 @@ import { usePathname } from "next/navigation";
 import { useCount } from "@/context/CountContext";
 
 const Header: React.FC = () => {
-
-  const pathname = usePathname()
-  const { count } = useCount()
+  const pathname = usePathname();
+  const { count } = useCount();
 
   return (
-    <header className="fixed w-full bg-gradient-to-tr from-indigo-600 via-pink-500 to-yellow-300 text-white  shadow-md">
-      <div className="container mx-auto flex justify-between items-center py-6 px-4 md:px-8">
+    <header className="fixed w-full bg-gradient-to-r from-yellow-400 to-pink-500 shadow-md">
+      <div className="container mx-auto flex justify-between items-center py-1 px-4 md:px-8">
         <Link
           href="/"
           className="text-3xl md:text-5xl font-bold text-gray-800 tracking-tight"
@@ -26,7 +25,7 @@ const Header: React.FC = () => {
               <Button buttonLabel="Sign Up" buttonBackgroundColor="blue" />
             </>
           ) : (
-            <p className=" font-semibold text-lg">Current count : {count}</p>
+            <p className="font-semibold text-lg">Current count : {count}</p>
           )}
         </div>
       </div>

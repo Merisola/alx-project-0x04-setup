@@ -1,34 +1,25 @@
-import {useState} from "react";
+import { useCount } from "@/context/CountContext";
 
 const CounterApp: React.FC = () => {
-    // useState creates a piece of state called count starting at 1.
-    // setFunction is a to update count
-    const [count, setCount] = useState(0); 
+  const { count, increment, decrement } = useCount();
 
-    // function to increase count by 1
-
-    const increment = () => {
-        setCount(count + 1);
-    };
-
-    const decrement = () => {
-        setCount (count > 0 ?  count - 1 : 0);
-    }
-
-    return (
+  return (
     <div className="min-h-screen bg-gradient-to-r from-yellow-400 to-pink-500 flex flex-col justify-center items-center text-white">
       {/* Title */}
       <h1 className="text-6xl font-extrabold mb-6">🤖 Fun Counter App 🎉</h1>
 
       {/* Funny message based on count */}
       <p className="text-lg font-medium mb-4">
-        Current count: {count} {count === 0 ? "🙈 No clicks yet!" : count % 10 === 0 && count !== 0 ? "🔥 You're on fire!" : ""}
+        Current count: {count}{" "}
+        {count === 0
+          ? "🙈 No clicks yet!"
+          : count % 10 === 0 && count !== 0
+          ? "🔥 You're on fire!"
+          : ""}
       </p>
 
       {/* Large display of count */}
-      <div className="text-6xl font-bold mb-8">
-        {count}
-      </div>
+      <div className="text-6xl font-bold mb-8">{count}</div>
 
       {/* Buttons */}
       <div className="flex space-x-4">
@@ -52,8 +43,6 @@ const CounterApp: React.FC = () => {
       </p>
     </div>
   );
-
-}
-
+};
 
 export default CounterApp;
